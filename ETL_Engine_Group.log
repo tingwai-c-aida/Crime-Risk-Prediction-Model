@@ -1,0 +1,366 @@
+2026-04-06 14:49:52  INFO      ============================================================
+2026-04-06 14:49:52  INFO      ETL STARTED
+2026-04-06 14:49:52  INFO      ============================================================
+2026-04-06 14:49:52  INFO      Database connection successful
+2026-04-06 14:49:52  INFO      Loading Excel Workbook...
+2026-04-06 14:49:53  INFO      Extracted 50 rows, 28 columns from Excel
+2026-04-06 14:49:53  INFO      --- TRANSFORM ---
+2026-04-06 14:49:53  INFO      Duplicates removed: 0 | Remaining: 50
+2026-04-06 14:49:53  INFO      Date parsing complete | Failed: 41
+2026-04-06 14:49:53  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-06 14:49:53  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-06 14:49:53  INFO      crime_risk_level derived | Distribution: {'Medium': 33, 'Low': 17, 'High': 0}
+2026-04-06 14:49:53  INFO      --- VALIDATION ---
+2026-04-06 14:49:53  INFO      Validation passed — 50 rows ready for staging
+2026-04-06 14:49:53  INFO      --- BACKUP Staging Table ---
+2026-04-06 14:49:53  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-06 14:49:53  INFO      --- LOAD: Staging Table ---
+2026-04-06 14:49:54  INFO      COMMIT stg_crime_incidents — 50 rows loaded
+2026-04-06 14:49:54  INFO      --- LOAD: Dimension Tables ---
+2026-04-06 14:49:54  INFO        COMMIT dim_municipality                    — 7 new rows inserted
+2026-04-06 14:49:54  INFO        COMMIT dim_location                        — 50 new rows inserted
+2026-04-06 14:49:54  INFO        COMMIT dim_date                            — 9 new rows inserted
+2026-04-06 14:49:54  ERROR     PIPELINE FAILED: Unexpected crime_category values after standardization: {nan}
+2026-04-06 14:57:58  INFO      ============================================================
+2026-04-06 14:57:58  INFO      ETL STARTED
+2026-04-06 14:57:58  INFO      ============================================================
+2026-04-06 14:57:58  INFO      Database connection successful
+2026-04-06 14:57:58  INFO      Loading Excel Workbook...
+2026-04-06 14:57:59  INFO      Extracted 50 rows, 28 columns from Excel
+2026-04-06 14:57:59  INFO      --- TRANSFORM ---
+2026-04-06 14:57:59  INFO      Duplicates removed: 0 | Remaining: 50
+2026-04-06 14:57:59  INFO      Date parsing complete | Failed: 41
+2026-04-06 14:57:59  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-06 14:57:59  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-06 14:57:59  INFO      crime_risk_level derived | Distribution: {'Medium': 33, 'Low': 17, 'High': 0}
+2026-04-06 14:57:59  INFO      --- VALIDATION ---
+2026-04-06 14:57:59  INFO      Validation passed — 50 rows ready for staging
+2026-04-06 14:57:59  INFO      --- BACKUP Staging Table ---
+2026-04-06 14:58:00  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-06 14:58:00  INFO      --- LOAD: Staging Table ---
+2026-04-06 14:58:00  INFO      COMMIT stg_crime_incidents — 50 rows loaded
+2026-04-06 14:58:00  INFO      --- LOAD: Dimension Tables ---
+2026-04-06 14:58:00  INFO        SKIP   dim_municipality                    — no new rows
+2026-04-06 14:58:00  INFO        SKIP   dim_location                        — no new rows
+2026-04-06 14:58:00  INFO        SKIP   dim_date                            — no new rows
+2026-04-06 14:58:00  INFO        COMMIT dim_crime_type                      — 24 new rows inserted
+2026-04-06 14:58:00  INFO        COMMIT dim_weapon                          — 3 new rows inserted
+2026-04-06 14:58:00  INFO        COMMIT dim_demographics                    — 49 new rows inserted
+2026-04-06 14:58:00  INFO        COMMIT dim_socioeconomic                   — 50 new rows inserted
+2026-04-06 14:58:00  INFO        COMMIT dim_police_response                 — 50 new rows inserted
+2026-04-06 14:58:00  INFO        COMMIT dim_risk                            — 3 new rows inserted
+2026-04-06 14:58:00  INFO      Dimension tables upsert complete ✅
+2026-04-06 14:58:00  INFO      --- LOAD: Fact Table ---
+2026-04-06 14:58:00  INFO      Fact deduplication: 0 removed | 50 unique incidents
+2026-04-06 14:58:00  INFO      COMMIT fact_incident — 50 new rows inserted
+2026-04-06 14:58:00  INFO      ============================================================
+2026-04-06 14:58:00  INFO      DATA QUALITY AUDIT
+2026-04-06 14:58:00  INFO      ============================================================
+2026-04-06 14:58:00  INFO        COUNT dbo.stg_crime_incidents                 =     50 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_municipality                    =      7 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_location                        =     50 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_date                            =      9 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_crime_type                      =     24 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_weapon                          =      3 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_demographics                    =     49 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_socioeconomic                   =     50 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_police_response                 =     50 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.dim_risk                            =      3 rows
+2026-04-06 14:58:00  INFO        COUNT dbo.fact_incident                       =     50 rows
+2026-04-06 14:58:00  INFO      ==========================================================================================
+2026-04-06 14:58:00  INFO      WAREHOUSE COMPLETE — elapsed 1.6s | log: c:\Users\feelw\Desktop\evelyn\winter 2026\AIDA GROUP\ETL_Engine.log
+2026-04-06 14:58:00  INFO      ==========================================================================================
+2026-04-06 15:59:57  INFO      ============================================================
+2026-04-06 15:59:57  INFO      ETL STARTED
+2026-04-06 15:59:57  INFO      ============================================================
+2026-04-06 15:59:57  INFO      Database connection successful
+2026-04-06 15:59:57  INFO      Loading Excel Workbook...
+2026-04-06 15:59:58  INFO      Extracted 50 rows, 28 columns from Excel
+2026-04-06 15:59:58  INFO      --- TRANSFORM ---
+2026-04-06 15:59:58  INFO      Duplicates removed: 0 | Remaining: 50
+2026-04-06 15:59:58  INFO      Date parsing complete | Failed: 41
+2026-04-06 15:59:58  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-06 15:59:58  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-06 15:59:58  INFO      crime_risk_level derived | Distribution: {'Medium': 29, 'Low': 20, 'High': 1}
+2026-04-06 15:59:58  INFO      --- VALIDATION ---
+2026-04-06 15:59:58  INFO      Validation passed — 50 rows ready for staging
+2026-04-06 15:59:58  INFO      --- BACKUP Staging Table ---
+2026-04-06 15:59:58  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-06 15:59:58  INFO      --- LOAD: Staging Table ---
+2026-04-06 15:59:58  INFO      COMMIT stg_crime_incidents — 50 rows loaded
+2026-04-06 15:59:58  INFO      --- LOAD: Dimension Tables ---
+2026-04-06 15:59:58  INFO        COMMIT dim_municipality                    — 7 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_location                        — 50 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_date                            — 9 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_crime_type                      — 23 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_weapon                          — 3 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_demographics                    — 49 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_socioeconomic                   — 50 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_police_response                 — 49 new rows inserted
+2026-04-06 15:59:58  INFO        COMMIT dim_risk                            — 3 new rows inserted
+2026-04-06 15:59:58  INFO      Dimension tables upsert complete ✅
+2026-04-06 15:59:58  INFO      --- LOAD: Fact Table ---
+2026-04-06 15:59:58  INFO      Fact deduplication: 0 removed | 50 unique incidents
+2026-04-06 15:59:58  INFO      COMMIT fact_incident — 50 new rows inserted
+2026-04-06 15:59:58  INFO      ============================================================
+2026-04-06 15:59:58  INFO      DATA QUALITY AUDIT
+2026-04-06 15:59:58  INFO      ============================================================
+2026-04-06 15:59:58  INFO        COUNT dbo.stg_crime_incidents                 =     50 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_municipality                    =      7 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_location                        =     50 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_date                            =      9 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_crime_type                      =     23 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_weapon                          =      3 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_demographics                    =     49 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_socioeconomic                   =     50 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_police_response                 =     49 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.dim_risk                            =      3 rows
+2026-04-06 15:59:58  INFO        COUNT dbo.fact_incident                       =     50 rows
+2026-04-06 15:59:58  INFO      ==========================================================================================
+2026-04-06 15:59:58  INFO      WAREHOUSE COMPLETE — elapsed 1.3s | log: c:\Users\feelw\Desktop\evelyn\winter 2026\AIDA GROUP\ETL_Engine.log
+2026-04-06 15:59:58  INFO      ==========================================================================================
+2026-04-07 00:50:56  INFO      ============================================================
+2026-04-07 00:50:56  INFO      ETL STARTED
+2026-04-07 00:50:56  INFO      ============================================================
+2026-04-07 00:50:56  INFO      Database connection successful
+2026-04-07 00:50:56  INFO      Loading Excel Workbook...
+2026-04-07 00:50:58  INFO      Extracted 10150 rows, 28 columns from Excel
+2026-04-07 00:50:58  INFO      --- TRANSFORM ---
+2026-04-07 00:50:58  INFO      Duplicates removed: 150 | Remaining: 10000
+2026-04-07 00:50:58  INFO      Date parsing complete | Failed: 8159
+2026-04-07 00:50:58  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-07 00:50:58  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-07 00:50:58  INFO      crime_risk_level derived | Distribution: {'Low': 5827, 'Medium': 3184, 'High': 989}
+2026-04-07 00:50:58  INFO      --- VALIDATION ---
+2026-04-07 00:50:58  INFO      Validation passed — 10000 rows ready for staging
+2026-04-07 00:50:58  INFO      --- BACKUP Staging Table ---
+2026-04-07 00:50:58  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-07 00:50:58  INFO      --- LOAD: Staging Table ---
+2026-04-07 00:50:58  INFO      COMMIT stg_crime_incidents — 10000 rows loaded
+2026-04-07 00:50:58  INFO      --- LOAD: Dimension Tables ---
+2026-04-07 00:50:58  INFO        COMMIT dim_municipality                    — 1 new rows inserted
+2026-04-07 00:50:58  INFO        COMMIT dim_location                        — 1278 new rows inserted
+2026-04-07 00:50:58  INFO        COMMIT dim_date                            — 390 new rows inserted
+2026-04-07 00:50:58  INFO        SKIP   dim_crime_type                      — no new rows
+2026-04-07 00:50:58  INFO        COMMIT dim_weapon                          — 1 new rows inserted
+2026-04-07 00:50:58  INFO        COMMIT dim_demographics                    — 9041 new rows inserted
+2026-04-07 00:50:58  INFO        SKIP   dim_socioeconomic                   — no new rows
+2026-04-07 00:50:58  INFO        COMMIT dim_police_response                 — 244 new rows inserted
+2026-04-07 00:50:58  INFO        SKIP   dim_risk                            — no new rows
+2026-04-07 00:50:58  INFO      Dimension tables upsert complete ✅
+2026-04-07 00:50:58  INFO      --- LOAD: Fact Table ---
+2026-04-07 00:50:59  INFO      Fact deduplication: 1354 removed | 10000 unique incidents
+2026-04-07 00:50:59  INFO      COMMIT fact_incident — 466 new rows inserted
+2026-04-07 00:50:59  INFO      ============================================================
+2026-04-07 00:50:59  INFO      DATA QUALITY AUDIT
+2026-04-07 00:50:59  INFO      ============================================================
+2026-04-07 00:50:59  INFO        COUNT dbo.stg_crime_incidents                 =  10000 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_municipality                    =     12 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_location                        =   9095 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_date                            =   1225 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_crime_type                      =    296 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_weapon                          =      5 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_demographics                    =   9041 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_socioeconomic                   =   9998 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_police_response                 =   8362 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.dim_risk                            =      3 rows
+2026-04-07 00:50:59  INFO        COUNT dbo.fact_incident                       =  10000 rows
+2026-04-07 00:50:59  INFO      ==========================================================================================
+2026-04-07 00:50:59  INFO      WAREHOUSE COMPLETE — elapsed 3.0s | log: e:\RDP - AIDA\final\ETL_Engine.log
+2026-04-07 00:50:59  INFO      ==========================================================================================
+2026-04-07 01:20:54  INFO      ============================================================
+2026-04-07 01:20:54  INFO      ETL STARTED
+2026-04-07 01:20:54  INFO      ============================================================
+2026-04-07 01:20:54  INFO      Database connection successful
+2026-04-07 01:20:54  INFO      Loading Excel Workbook...
+2026-04-07 01:20:56  INFO      Extracted 10150 rows, 28 columns from Excel
+2026-04-07 01:20:56  INFO      --- TRANSFORM ---
+2026-04-07 01:20:56  INFO      Duplicates removed: 150 | Remaining: 10000
+2026-04-07 01:20:56  INFO      Date parsing complete | Failed: 8159
+2026-04-07 01:20:56  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-07 01:20:56  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-07 01:20:56  INFO      crime_risk_level derived | Distribution: {'Low': 6635, 'Medium': 2376, 'High': 989}
+2026-04-07 01:20:56  INFO      --- VALIDATION ---
+2026-04-07 01:20:56  INFO      Validation passed — 10000 rows ready for staging
+2026-04-07 01:20:56  INFO      --- BACKUP Staging Table ---
+2026-04-07 01:20:56  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-07 01:20:56  INFO      --- LOAD: Staging Table ---
+2026-04-07 01:20:56  INFO      COMMIT stg_crime_incidents — 10000 rows loaded
+2026-04-07 01:20:56  INFO      --- LOAD: Dimension Tables ---
+2026-04-07 01:20:56  INFO        SKIP   dim_municipality                    — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_location                        — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_date                            — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_crime_type                      — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_weapon                          — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_demographics                    — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_socioeconomic                   — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_police_response                 — no new rows
+2026-04-07 01:20:56  INFO        SKIP   dim_risk                            — no new rows
+2026-04-07 01:20:56  INFO      Dimension tables upsert complete ✅
+2026-04-07 01:20:56  INFO      --- LOAD: Fact Table ---
+2026-04-07 01:20:57  INFO      Fact deduplication: 1354 removed | 10000 unique incidents
+2026-04-07 01:20:57  INFO      fact_incident — no new rows (idempotent re-run)
+2026-04-07 01:20:57  INFO      ============================================================
+2026-04-07 01:20:57  INFO      DATA QUALITY AUDIT
+2026-04-07 01:20:57  INFO      ============================================================
+2026-04-07 01:20:57  INFO        COUNT dbo.stg_crime_incidents                 =  10000 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_municipality                    =     12 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_location                        =   9095 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_date                            =   1225 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_crime_type                      =    296 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_weapon                          =      5 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_demographics                    =   9041 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_socioeconomic                   =   9998 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_police_response                 =   8362 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.dim_risk                            =      3 rows
+2026-04-07 01:20:57  INFO        COUNT dbo.fact_incident                       =  10000 rows
+2026-04-07 01:20:57  INFO      ==========================================================================================
+2026-04-07 01:20:57  INFO      WAREHOUSE COMPLETE — elapsed 2.5s | log: e:\RDP - AIDA\final\ETL_Engine.log
+2026-04-07 01:20:57  INFO      ==========================================================================================
+2026-04-07 01:22:18  INFO      ============================================================
+2026-04-07 01:22:18  INFO      ETL STARTED
+2026-04-07 01:22:18  INFO      ============================================================
+2026-04-07 01:22:18  INFO      Database connection successful
+2026-04-07 01:22:18  INFO      Loading Excel Workbook...
+2026-04-07 01:22:19  INFO      Extracted 10150 rows, 28 columns from Excel
+2026-04-07 01:22:19  INFO      --- TRANSFORM ---
+2026-04-07 01:22:19  INFO      Duplicates removed: 150 | Remaining: 10000
+2026-04-07 01:22:19  INFO      Date parsing complete | Failed: 8159
+2026-04-07 01:22:19  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-07 01:22:19  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-07 01:22:20  INFO      crime_risk_level derived | Distribution: {'Low': 6635, 'Medium': 2376, 'High': 989}
+2026-04-07 01:22:20  INFO      --- VALIDATION ---
+2026-04-07 01:22:20  INFO      Validation passed — 10000 rows ready for staging
+2026-04-07 01:22:20  INFO      --- BACKUP Staging Table ---
+2026-04-07 01:22:20  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-07 01:22:20  INFO      --- LOAD: Staging Table ---
+2026-04-07 01:22:20  INFO      COMMIT stg_crime_incidents — 10000 rows loaded
+2026-04-07 01:22:20  INFO      --- LOAD: Dimension Tables ---
+2026-04-07 01:22:20  INFO        SKIP   dim_municipality                    — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_location                        — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_date                            — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_crime_type                      — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_weapon                          — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_demographics                    — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_socioeconomic                   — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_police_response                 — no new rows
+2026-04-07 01:22:20  INFO        SKIP   dim_risk                            — no new rows
+2026-04-07 01:22:20  INFO      Dimension tables upsert complete ✅
+2026-04-07 01:22:20  INFO      --- LOAD: Fact Table ---
+2026-04-07 01:22:20  INFO      Fact deduplication: 1354 removed | 10000 unique incidents
+2026-04-07 01:22:20  INFO      fact_incident — no new rows (idempotent re-run)
+2026-04-07 01:22:20  INFO      ============================================================
+2026-04-07 01:22:20  INFO      DATA QUALITY AUDIT
+2026-04-07 01:22:20  INFO      ============================================================
+2026-04-07 01:22:20  INFO        COUNT dbo.stg_crime_incidents                 =  10000 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_municipality                    =     12 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_location                        =   9095 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_date                            =   1225 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_crime_type                      =    296 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_weapon                          =      5 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_demographics                    =   9041 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_socioeconomic                   =   9998 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_police_response                 =   8362 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.dim_risk                            =      3 rows
+2026-04-07 01:22:20  INFO        COUNT dbo.fact_incident                       =  10000 rows
+2026-04-07 01:22:20  INFO      ==========================================================================================
+2026-04-07 01:22:20  INFO      WAREHOUSE COMPLETE — elapsed 2.6s | log: e:\RDP - AIDA\final\ETL_Engine.log
+2026-04-07 01:22:20  INFO      ==========================================================================================
+2026-04-07 01:26:13  INFO      ============================================================
+2026-04-07 01:26:13  INFO      ETL STARTED
+2026-04-07 01:26:13  INFO      ============================================================
+2026-04-07 01:26:13  INFO      Database connection successful
+2026-04-07 01:26:13  INFO      Loading Excel Workbook...
+2026-04-07 01:26:14  INFO      Extracted 10150 rows, 28 columns from Excel
+2026-04-07 01:26:14  INFO      --- TRANSFORM ---
+2026-04-07 01:26:14  INFO      Duplicates removed: 150 | Remaining: 10000
+2026-04-07 01:26:14  INFO      Date parsing complete | Failed: 8159
+2026-04-07 01:26:14  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-07 01:26:14  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-07 01:26:14  INFO      crime_risk_level derived | Distribution: {'Low': 5827, 'Medium': 2322, 'High': 1851}
+2026-04-07 01:26:14  INFO      --- VALIDATION ---
+2026-04-07 01:26:14  INFO      Validation passed — 10000 rows ready for staging
+2026-04-07 01:26:14  INFO      --- BACKUP Staging Table ---
+2026-04-07 01:26:15  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-07 01:26:15  INFO      --- LOAD: Staging Table ---
+2026-04-07 01:26:15  INFO      COMMIT stg_crime_incidents — 10000 rows loaded
+2026-04-07 01:26:15  INFO      --- LOAD: Dimension Tables ---
+2026-04-07 01:26:15  INFO        SKIP   dim_municipality                    — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_location                        — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_date                            — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_crime_type                      — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_weapon                          — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_demographics                    — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_socioeconomic                   — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_police_response                 — no new rows
+2026-04-07 01:26:15  INFO        SKIP   dim_risk                            — no new rows
+2026-04-07 01:26:15  INFO      Dimension tables upsert complete ✅
+2026-04-07 01:26:15  INFO      --- LOAD: Fact Table ---
+2026-04-07 01:26:15  INFO      Fact deduplication: 1354 removed | 10000 unique incidents
+2026-04-07 01:26:15  INFO      fact_incident — no new rows (idempotent re-run)
+2026-04-07 01:26:15  INFO      ============================================================
+2026-04-07 01:26:15  INFO      DATA QUALITY AUDIT
+2026-04-07 01:26:15  INFO      ============================================================
+2026-04-07 01:26:15  INFO        COUNT dbo.stg_crime_incidents                 =  10000 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_municipality                    =     12 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_location                        =   9095 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_date                            =   1225 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_crime_type                      =    296 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_weapon                          =      5 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_demographics                    =   9041 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_socioeconomic                   =   9998 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_police_response                 =   8362 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.dim_risk                            =      3 rows
+2026-04-07 01:26:15  INFO        COUNT dbo.fact_incident                       =  10000 rows
+2026-04-07 01:26:15  INFO      ==========================================================================================
+2026-04-07 01:26:15  INFO      WAREHOUSE COMPLETE — elapsed 2.5s | log: e:\RDP - AIDA\final\ETL_Engine.log
+2026-04-07 01:26:15  INFO      ==========================================================================================
+2026-04-07 01:32:39  INFO      ============================================================
+2026-04-07 01:32:39  INFO      ETL STARTED
+2026-04-07 01:32:39  INFO      ============================================================
+2026-04-07 01:32:39  INFO      Database connection successful
+2026-04-07 01:32:39  INFO      Loading Excel Workbook...
+2026-04-07 01:32:41  INFO      Extracted 10150 rows, 28 columns from Excel
+2026-04-07 01:32:41  INFO      --- TRANSFORM ---
+2026-04-07 01:32:41  INFO      Duplicates removed: 150 | Remaining: 10000
+2026-04-07 01:32:41  INFO      Date parsing complete | Failed: 8159
+2026-04-07 01:32:41  INFO      PII age masking applied — offender_age and victim_age binned
+2026-04-07 01:32:41  INFO      --- FEATURE ENHANCEMENT ---
+2026-04-07 01:32:41  INFO      crime_risk_level derived | Distribution: {'Low': 6635, 'Medium': 2376, 'High': 989}
+2026-04-07 01:32:41  INFO      --- VALIDATION ---
+2026-04-07 01:32:41  INFO      Validation passed — 10000 rows ready for staging
+2026-04-07 01:32:41  INFO      --- BACKUP Staging Table ---
+2026-04-07 01:32:41  INFO      Backup complete: stg_crime_incidents -> stg_crime_incidents_backup
+2026-04-07 01:32:41  INFO      --- LOAD: Staging Table ---
+2026-04-07 01:32:41  INFO      COMMIT stg_crime_incidents — 10000 rows loaded
+2026-04-07 01:32:41  INFO      --- LOAD: Dimension Tables ---
+2026-04-07 01:32:41  INFO        COMMIT dim_municipality                    — 10 new rows inserted
+2026-04-07 01:32:41  INFO        COMMIT dim_location                        — 9095 new rows inserted
+2026-04-07 01:32:41  INFO        COMMIT dim_date                            — 1225 new rows inserted
+2026-04-07 01:32:42  INFO        COMMIT dim_crime_type                      — 46 new rows inserted
+2026-04-07 01:32:42  INFO        COMMIT dim_weapon                          — 5 new rows inserted
+2026-04-07 01:32:42  INFO        COMMIT dim_demographics                    — 9041 new rows inserted
+2026-04-07 01:32:42  INFO        COMMIT dim_socioeconomic                   — 9997 new rows inserted
+2026-04-07 01:32:42  INFO        COMMIT dim_police_response                 — 8362 new rows inserted
+2026-04-07 01:32:42  INFO        COMMIT dim_risk                            — 3 new rows inserted
+2026-04-07 01:32:42  INFO      Dimension tables upsert complete ✅
+2026-04-07 01:32:42  INFO      --- LOAD: Fact Table ---
+2026-04-07 01:32:42  INFO      Fact deduplication: 0 removed | 10000 unique incidents
+2026-04-07 01:32:43  INFO      COMMIT fact_incident — 10000 new rows inserted
+2026-04-07 01:32:43  INFO      ============================================================
+2026-04-07 01:32:43  INFO      DATA QUALITY AUDIT
+2026-04-07 01:32:43  INFO      ============================================================
+2026-04-07 01:32:43  INFO        COUNT dbo.stg_crime_incidents                 =  10000 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_municipality                    =     10 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_location                        =   9095 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_date                            =   1225 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_crime_type                      =     46 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_weapon                          =      5 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_demographics                    =   9041 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_socioeconomic                   =   9997 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_police_response                 =   8362 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.dim_risk                            =      3 rows
+2026-04-07 01:32:43  INFO        COUNT dbo.fact_incident                       =  10000 rows
+2026-04-07 01:32:43  INFO      ==========================================================================================
+2026-04-07 01:32:43  INFO      WAREHOUSE COMPLETE — elapsed 3.7s | log: e:\RDP - AIDA\final\ETL_Engine.log
+2026-04-07 01:32:43  INFO      ==========================================================================================
